@@ -1,0 +1,10 @@
+Data set,Best solution,Pop_size,Time
+berlin52,10305.737039006452,100,<module 'timeit' from '/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/timeit.py'>
+berlin52,10383.19671367199,100,<function timeit at 0x10304e670>
+berlin52,10471.22819915729,100,<function timeit at 0x100f1f670>
+berlin52,10355.414182537275,100,<function timeit at 0x10320f670>
+berlin52,11002.236487617109,100,<function timeit at 0x100a42670>
+berlin52,12215.253600242724,100,<function timeit at 0x102e5f5e0>
+berlin52,10542.301994949632,100,<function timeit at 0x104bcf670>
+berlin52,10319.592842888158,100,<function timeit at 0x1045cb670>
+berlin52,10449.761299543015,100,1.3385000228881836
