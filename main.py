@@ -12,11 +12,13 @@ import time
 from solvers import initialize_population, evaluate, selection, crossover, mutation
 from solvers.genetic_algorithms import CrossoverStrategy, MutationStrategy, SelectionStrategy
 from tqdm import tqdm
-from openpyxl import Workbook, load_workbook
-import csv
+import pandas as pd
 
+import csv
+import locale
 
 start_time = time.time()
+
 def main():
 
     configur = ConfigParser()
@@ -60,10 +62,42 @@ def main():
     print(f"start_city:  {start_city}")
     print(f"time:  {finish_time}")
 
+    # csvPath = "plik.csv"
+    # with open(csvPath) as csv_file:
+    #     csv_reader = csv.reader(csv_file, delimiter=',')
+    #     # totalRecord =len(list(csv_reader1))
+    #     line_count = 0
+    #     for row in csv_reader:
+    #         if line_count == 0:
+    #             print(f'Column names: {", ".join(row)}')
+    #             line_count += 1
+    #
+    #         else:
+    #             if row:
+    #                 print(f'\t{row[0]}, {row[1]},  {row[2]}, {row[3]}.')
+    #                 line_count += 1
+    #     print(f'Processed {line_count} lines.')
 
-    with open("plik.csv", 'a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([f"{data_set}" , f"{best_solution.cost}", f"{pop_size}", f"{finish_time}"])
+
+    # with open("plik.csv", 'a', newline='') as file:
+    #     writer = csv.writer(file)
+    #     writer.writerow([f"{data_set}" , f"{best_solution.cost}", f"{pop_size}", f"{finish_time}"])
+
+
+    filecsv = pd.read_csv('plik.csv')
+    print("Number of lines present:",len(filecsv))
+
+    sorted_filecsv = filecsv.sort_values(by=["Best solution"], ascending=False)
+    sorted_filecsv.to_csv('plik.csv', index=False)
+
+    filecsv['avg_points']= filecsv[['B2','B11']].mean(axis=1)
+
+    # data = filecsv.iloc[:,1:2].values
+    #
+    # data.mean(axis=1)
+    # print(data)
+
+
 
 if __name__ == "__main__":
     main()
