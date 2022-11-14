@@ -56,9 +56,10 @@ def main():
     end_time = time.time()
     finish_time= end_time-start_time
     print(f"Best solution: {best_solution.cost}")
+    print(f"Strategy: {crossover_strategy}")
 
     print(f"data_set:  {data_set}")
-    print(f"pop_size:  {pop_size}")
+    print(f"max generations:  {max_generations}")
     print(f"start_city:  {start_city}")
     print(f"time:  {finish_time}")
 
@@ -79,23 +80,17 @@ def main():
     #     print(f'Processed {line_count} lines.')
 
 
-    # with open("plik.csv", 'a', newline='') as file:
-    #     writer = csv.writer(file)
-    #     writer.writerow([f"{data_set}" , f"{best_solution.cost}", f"{pop_size}", f"{finish_time}"])
+    with open("berkin52_cross.csv", 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([f"{data_set}" , f"{best_solution.cost}", f"{max_generations}", f"{crossover_strategy}", f"{finish_time}"])
 
 
-    filecsv = pd.read_csv('plik.csv')
+    filecsv = pd.read_csv('berkin52_cross.csv')
     print("Number of lines present:",len(filecsv))
 
     sorted_filecsv = filecsv.sort_values(by=["Best solution"], ascending=False)
-    sorted_filecsv.to_csv('plik.csv', index=False)
+    sorted_filecsv.to_csv('berkin52_cross.csv', index=False)
 
-    filecsv['avg_points']= filecsv[['B2','B11']].mean(axis=1)
-
-    # data = filecsv.iloc[:,1:2].values
-    #
-    # data.mean(axis=1)
-    # print(data)
 
 
 
