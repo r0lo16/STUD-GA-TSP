@@ -45,6 +45,45 @@ def main():
                 best_solution = O1
 
     print(f"Best solution: {best_solution.cost}")
+<<<<<<< Updated upstream
+=======
+    print(f"Strategy: {crossover_strategy}")
+
+    print(f"data_set:  {data_set}")
+    print(f"max generations:  {max_generations}")
+    print(f"start_city:  {start_city}")
+    print(f"time:  {finish_time}")
+
+    # csvPath = "plik.csv"
+    # with open(csvPath) as csv_file:
+    #     csv_reader = csv.reader(csv_file, delimiter=',')
+    #     # totalRecord =len(list(csv_reader1))
+    #     line_count = 0
+    #     for row in csv_reader:
+    #         if line_count == 0:
+    #             print(f'Column names: {", ".join(row)}')
+    #             line_count += 1
+    #
+    #         else:
+    #             if row:
+    #                 print(f'\t{row[0]}, {row[1]},  {row[2]}, {row[3]}.')
+    #                 line_count += 1
+    #     print(f'Processed {line_count} lines.')
+
+
+    with open("ruletion.csv", 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([f"{data_set}" , f"{best_solution.cost}", f"{max_generations}", f"{crossover_strategy}",f"{selection_strategy}", f"{finish_time}"])
+
+
+    filecsv = pd.read_csv('ruletion.csv')
+    print("Number of lines present:",len(filecsv))
+
+    sorted_filecsv = filecsv.sort_values(by=["Best solution"], ascending=False)
+    sorted_filecsv.to_csv('ruletion.csv', index=False)
+
+
+>>>>>>> Stashed changes
 
 
 if __name__ == "__main__":
